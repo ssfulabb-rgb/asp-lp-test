@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ご購入の方だけの特別なご案内（連携テスト用）</title>
+<style>
+  :root { --ink:#1a1a1a; --sub:#5f6368; --line:#e3e3e3; --bg:#fafaf8; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family: "Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,sans-serif; line-height:1.8; }
+  main { max-width:640px; margin:0 auto; padding:40px 16px 64px; }
+  .tag { display:inline-block; font-size:12px; color:#7a5200; border:1px solid #f0d9a8; border-radius:999px; padding:2px 10px; background:#fdf7e8; }
+  h1 { font-size:24px; line-height:1.45; margin:12px 0 8px; }
+  .timer { font-size:15px; font-weight:700; color:#b3261e; margin:8px 0 18px; }
+  .box { background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px; margin:20px 0; }
+  .price s { color:var(--sub); }
+  .price b { font-size:28px; }
+  .btn { display:block; text-align:center; background:#0b6b45; color:#fff; text-decoration:none; font-weight:700; font-size:17px; padding:16px; border-radius:999px; }
+  .note { font-size:12px; color:var(--sub); margin-top:10px; }
+</style>
+</head>
+<body>
+<main>
+  <span class="tag">ご購入の方だけの特別なご案内（連携テスト用）</span>
+  <h1>テスト商品B を、今だけ特別にご案内します</h1>
+  <div class="timer">このご案内は、ご購入から <span id="left">30:00</span> で終了します</div>
+  <p>このページは、テスト商品A を買った直後だけに出る、ワンタイムオファーの見本です（別のドメインに置いています）。</p>
+
+  <div class="box price">
+    <div>通常 <s>4,000円</s></div>
+    <div>今だけ <b>2,000円</b>（税込）</div>
+  </div>
+
+  <a class="btn" href="https://asp.members-room.com/p/test-product-b/checkout">購入する</a>
+  <p class="note">お名前とメールアドレスは、さきほどのご購入のものが入ります。カード情報だけでお申し込みいただけます。今はテストモードなので、本物のお金は動きません。</p>
+</main>
+<script>
+  // 見た目の残り時間（本当の締め切りは決済ページの側で守る）
+  var end = Date.now() + 30 * 60 * 1000;
+  setInterval(function () {
+    var s = Math.max(0, Math.floor((end - Date.now()) / 1000));
+    document.getElementById("left").textContent = String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
+  }, 1000);
+</script>
+</body>
+</html>
